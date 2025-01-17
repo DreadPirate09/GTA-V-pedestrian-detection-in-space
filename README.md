@@ -5,5 +5,5 @@
 ##### Here is a ss sample
 
 <p align="center">
-  <img src="dist.PNG" width="45%" />
+  <img src="dist.PNG" />
 </p>
