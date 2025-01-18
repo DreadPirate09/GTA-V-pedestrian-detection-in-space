@@ -1,6 +1,4 @@
-##### Used yolo for the detection of the persons and the MiDaS model for the depth prediction 
-##### the MiDaS inference time is pretty damn high
-
+##### Used yolo for the people detection and the MiDaS model the DPT_Hybrid type for the depth prediction 
 
 ##### Here is a ss sample
 
