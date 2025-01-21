@@ -88,6 +88,9 @@ while True:
             y_min_scaled = max(0, y_min_scaled)
             y_max_scaled = min(depth_map.shape[0], y_max_scaled)
 
+            pos_x = (x_min_scaled + x_max_scaled) / 2
+            pos_y = (y_min_scaled + y_max_scaled) / 2 
+
             object_depth = depth_map[y_min_scaled:y_max_scaled, x_min_scaled:x_max_scaled]
             print(object_depth)
 
@@ -101,7 +104,7 @@ while True:
                 distance = 99999
 
             cv2.rectangle(frame, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
-            cv2.putText(frame, f'Distance: {distance:.2f} units', (x_min, y_min - 10),
+            cv2.putText(frame, f'X: {pos_x:.2f} Y: {pos_y:.2f} Distance: {distance:.2f} units', (x_min, y_min - 10),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
 
