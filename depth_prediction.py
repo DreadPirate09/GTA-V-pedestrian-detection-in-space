@@ -70,7 +70,7 @@ while True:
         depth_prediction = depth_model(input_batch)
         depth_map = depth_prediction.squeeze().cpu().numpy()
     depth_map_normalized = (depth_map - np.min(depth_map)) / (np.max(depth_map) - np.min(depth_map))
-    print("Min and max+ "+str(np.min(depth_map))+" "+str(np.max(depth_map)))
+
     for mask, box, conf, cls in zip(results[0].masks.data, results[0].boxes.xyxy, results[0].boxes.conf, results[0].boxes.cls):
         x_min, y_min, x_max, y_max = map(int, box[:4])
         confidence = conf.item()
@@ -106,10 +106,9 @@ while True:
                 print(f'Object depth size {object_depth.size}')
                 print(f'Bounding box: x_min={x_min}, x_max={x_max}, y_min={y_min}, y_max={y_max}')
                 print(f'Depth map shape: {depth_map.shape}')
-                distance = 99999
+                distance = 0
 
             text_to_add = f'X: {pos_x:.2f} \nY: {pos_y:.2f} \nZ: {distance:.2f} units'
-
             cv2.rectangle(frame, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
             for pos,t in enumerate(text_to_add.split('\n')):
                 cv2.putText(frame, t, (x_min, y_min + 15 * pos + 15),
@@ -133,8 +132,6 @@ while True:
     screen.blit(image_surface, (0, 0))
     pygame.display.update()
     clock.tick(30)
-
-
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
