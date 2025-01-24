@@ -3,5 +3,5 @@
 ##### Here is a ss sample
 
 <p align="center">
-  <img src="dist.PNG" />
+  <img src="coord.PNG" />
 </p>
